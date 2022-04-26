@@ -230,7 +230,11 @@ int32_t go_seq_to_refnum(JNIEnv *env, jobject o) {
 	if (o == NULL) {
 		return NULL_REFNUM;
 	}
-	LOG_FATAL("proxy_service: seq_incRef -> %p", seq_incRef);
+	if (seq_incRef == NULL) {
+		LOG_FATAL("proxy_service: jmethodID is null");
+	} else {
+		LOG_FATAL("proxy_service: jmethodID is not null");
+	}
 	return (int32_t)(*env)->CallStaticIntMethod(env, seq_class, seq_incRef, o);
 }
 
