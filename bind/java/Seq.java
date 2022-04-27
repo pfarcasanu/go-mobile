@@ -45,7 +45,9 @@ public class Seq {
 	private static native void init();
 
 	// Empty method to run class initializer
-	public static void touch() {}
+	public static void touch() {
+		System.out.println("proxy_service: Seq::touch()");
+	}
 
 	private Seq() {
 	}
