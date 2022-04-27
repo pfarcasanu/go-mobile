@@ -20,7 +20,7 @@ public class LoadJNI {
         public static final Object ctx;
 
         static {
-		System.out.println("skywalker: LoadJNI static constructor");
+		System.out.println("proxy_service: LoadJNI static constructor");
                 Object androidCtx = null;
                 try {
                         // TODO(hyangah): check proguard rule.
