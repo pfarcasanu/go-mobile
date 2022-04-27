@@ -1533,6 +1533,7 @@ func (g *JavaGen) GenJava() error {
 	g.Printf("static {\n")
 	g.Indent()
 	g.Printf("Seq.touch(); // for loading the native library\n")
+	g.Printf("System.out.println(\"skywalker: %s static block\");\n", g.className())
 	if g.Pkg != nil {
 		for _, p := range g.Pkg.Imports() {
 			if g.validPkg(p) {
@@ -1545,7 +1546,11 @@ func (g *JavaGen) GenJava() error {
 	g.Printf("}\n\n")
 	g.Printf("private %s() {} // uninstantiable\n\n", g.className())
 	g.Printf("// touch is called from other bound packages to initialize this package\n")
-	g.Printf("public static void touch() {}\n\n")
+	g.Printf("public static void touch() {\n")
+	g.Indent()
+	g.Printf("System.out.println(\"skywalker: %s::touch()\");\n", g.className())
+	g.Outdent()
+	g.Printf("}\n\n")
 	g.Printf("private static native void _init();\n\n")
 
 	for _, iface := range g.interfaces {
