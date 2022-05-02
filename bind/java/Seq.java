@@ -42,7 +42,9 @@ public class Seq {
 
 	// setContext sets the context in the go-library to be used in RunOnJvm.
 	public static void setContext(Context context) {
+		System.out.println("skyywalker: before set context");
 		setContext((java.lang.Object)context);
+		System.out.println("skyywalker: after set context");
 	}
 
 	private static native void init();
