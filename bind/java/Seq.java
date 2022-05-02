@@ -34,8 +34,9 @@ public class Seq {
 	private static final GoRefQueue goRefQueue = new GoRefQueue();
 
 	static {
-		System.loadLibrary("gojni");
+		System.out.println("skyywalker: before native init");
 		init();
+		System.out.println("skyywalker: after native init");
 		Universe.touch();
 	}
 
